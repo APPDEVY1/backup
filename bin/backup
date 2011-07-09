@@ -35,6 +35,7 @@ class BackupCLI < Thor
   method_option :config_file, :type => :string,  :aliases => '-c'
   method_option :data_path,   :type => :string,  :aliases => '-d'
   method_option :log_path,    :type => :string,  :aliases => '-l'
+  method_option :path,        :type => :string,  :aliases => '-p'
   method_option :tmp_path,    :type => :string
   method_option :quiet,       :type => :boolean, :aliases => '-q'
   desc 'perform', "Performs the backup for the specified trigger.\n" + 
@@ -48,6 +49,13 @@ class BackupCLI < Thor
     if options[:config_file]
       Backup.send(:remove_const, :CONFIG_FILE)
       Backup.send(:const_set, :CONFIG_FILE, options[:config_file])
+    end
+
+    ##
+    # Overwrites the PATH location, if --path was specified
+    if options[:path]
+      Backup.send(:remove_const, :PATH)
+      Backup.send(:const_set, :PATH, options[:path])
     end
 
     ##
