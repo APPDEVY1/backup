@@ -14,6 +14,10 @@ Backup::Dependency.all.each do |name, gemspec|
   gem(name, gemspec[:version])
 end
 
+# FIXME: For old backup.rb code. Re-write it in the context of Fog and get rid of
+# this.
+gem 'aws-s3'
+
 ##
 # Define gems to be used in the 'test' environment
 group :test do
