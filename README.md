@@ -1,3 +1,15 @@
+Square-specific things
+======================
+
+This is a Square-specific integration branch of Backup.
+It mostly tracks meskyanichi/backup:master, but cherry-picks cool stuff from other branches.
+
+To re-generate bundled gems in the submodule, run (with a Ruby VM as close as possible to production):
+
+* bundle package
+* bundle install --local --path vendor/bundle
+
+
 Backup 3
 ========
 
